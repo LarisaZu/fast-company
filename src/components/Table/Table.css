@@ -1,0 +1,39 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+} 
+
+table td,
+table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table tr:hover {
+  background-color: #ddd;
+}
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  box-shadow: inset 1px 1px #000, 0 1px #000;
+  text-align: center;
+  background-color: #04aa6d;
+  color: white;
+}
+
+
+
+input {
+  margin-left: 10px;
+}
+
