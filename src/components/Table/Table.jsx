@@ -1,27 +1,21 @@
-import { useMemo } from "react";
-import { useTable } from "react-table";
-import "./Table.css";
+import { useMemo } from 'react';
+import { useTable } from 'react-table';
+import './Table.css';
 
-export const Table = ({state, columns}) => {
+const Table = ({ state, columns }) => {
   const data = useMemo(() => state, [state]);
-  console.log("🚀 ~ file: Table.jsx ~ line 7 ~ Table ~ data", data)
-    
+
   const tableInstance = useTable({ columns, data });
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = tableInstance;
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    tableInstance;
 
   return (
     <table {...getTableProps()}>
       <thead>
-        {headerGroups.map((headerGroup) => (
+        {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+            {headerGroup.headers.map(column => (
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
             ))}
           </tr>
         ))}
@@ -31,8 +25,8 @@ export const Table = ({state, columns}) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
               })}
             </tr>
           );
@@ -41,3 +35,5 @@ export const Table = ({state, columns}) => {
     </table>
   );
 };
+
+export default Table;

@@ -1,12 +1,12 @@
-import { Users } from "./components/Users/Users";
-import { Container } from './components/Container/Container';
+import Users from './components/Users';
+import Container from './components/Container';
 
 function App() {
   return (
     <>
       <Container>
         <Users />
-        </Container>
+      </Container>
     </>
   );
 }
