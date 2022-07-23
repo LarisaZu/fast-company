@@ -59,73 +59,75 @@ const Table = ({ state, columns }) => {
           })}
         </tbody>
       </table>
-      <div className="pagination alert alert-secondary d-flex mt-2">
-        <span>
-          Page{' '}
-          <strong>
-            {pageIndex + 1} of {pageCount}
-          </strong>{' '}
-        </span>
-        <span>
-          | Go to page:{' '}
-          <input
-            type="number"
-            min={1}
-            max={pageOptions.length}
-            defaultValue={pageIndex + 1}
-            onChange={e => {
-              const pageNumber = e.target.value
-                ? Number(e.target.value) - 1
-                : 0;
-              gotoPage(pageNumber);
-            }}
-            style={{ width: '50px' }}
-          />
-        </span>
+      {pageCount > 1 && (
+        <div className="pagination alert alert-secondary d-flex mt-2">
+          <span>
+            Page{' '}
+            <strong>
+              {pageIndex + 1} of {pageCount}
+            </strong>{' '}
+          </span>
+          <span>
+            | Go to page:{' '}
+            <input
+              type="number"
+              min={1}
+              max={pageOptions.length}
+              defaultValue={pageIndex + 1}
+              onChange={e => {
+                const pageNumber = e.target.value
+                  ? Number(e.target.value) - 1
+                  : 0;
+                gotoPage(pageNumber);
+              }}
+              style={{ width: '50px' }}
+            />
+          </span>
 
-        <button
-          className={'btn btn-' + (canPreviousPage ? 'primary' : 'secondary')}
-          type="button"
-          onClick={() => gotoPage(0)}
-          disabled={!canPreviousPage}
-        >
-          {'<<<'}
-        </button>
-        <button
-          className={'btn btn-' + (canPreviousPage ? 'primary' : 'secondary')}
-          type="button"
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-        >
-          {'<'}
-        </button>
-        <button
-          className={'btn btn-' + (canNextPage ? 'primary' : 'secondary')}
-          type="button"
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-        >
-          {'>'}
-        </button>
-        <button
-          className={'btn btn-' + (canNextPage ? 'primary' : 'secondary')}
-          type="button"
-          onClick={() => gotoPage(pageCount - 1)}
-          disabled={!canNextPage}
-        >
-          {'>>>'}
-        </button>
-        <select
-          value={pageSize}
-          onChange={e => setPageSize(Number(e.target.value))}
-        >
-          {[4, 8, 10].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+          <button
+            className={'btn btn-' + (canPreviousPage ? 'primary' : 'secondary')}
+            type="button"
+            onClick={() => gotoPage(0)}
+            disabled={!canPreviousPage}
+          >
+            {'<<<'}
+          </button>
+          <button
+            className={'btn btn-' + (canPreviousPage ? 'primary' : 'secondary')}
+            type="button"
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+          >
+            {'<'}
+          </button>
+          <button
+            className={'btn btn-' + (canNextPage ? 'primary' : 'secondary')}
+            type="button"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+          >
+            {'>'}
+          </button>
+          <button
+            className={'btn btn-' + (canNextPage ? 'primary' : 'secondary')}
+            type="button"
+            onClick={() => gotoPage(pageCount - 1)}
+            disabled={!canNextPage}
+          >
+            {'>>>'}
+          </button>
+          <select
+            value={pageSize}
+            onChange={e => setPageSize(Number(e.target.value))}
+          >
+            {[4, 8, 10].map(pageSize => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
     </>
   );
 };

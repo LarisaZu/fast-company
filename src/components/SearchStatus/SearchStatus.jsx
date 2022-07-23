@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 const SearchStatus = ({ num }) => {
   const renderStatus = num => {
     const lastOne = Number(num.toString().slice(-1));
+    if (num > 4 && num < 15) {
+      return 'человек тусанет';
+    }
     if ([2, 3, 4].indexOf(lastOne) !== -1) return 'человека тусанет';
     return 'человек тусанет';
   };
