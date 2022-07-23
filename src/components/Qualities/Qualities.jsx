@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Qualities = ({ cellInfo }) => {
   const {
     cell: {
@@ -16,6 +18,10 @@ const Qualities = ({ cellInfo }) => {
       ))}
     </div>
   );
+};
+
+Qualities.propTypes = {
+  cellInfo: PropTypes.object.isRequired,
 };
 
 export default Qualities;
